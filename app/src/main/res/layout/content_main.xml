@@ -46,17 +46,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal|top"
         android:background="#F44336">
 
         <TextView
-            android:id="@+id/fullscreen_content"
+            android:id="@+id/lineText"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="123dp"
             android:gravity="center"
             android:keepScreenOn="true"
-            android:text="Linia 107"
+            android:text="TEXT"
             android:textColor="#FFFFFF"
             android:textSize="50sp"
             android:textStyle="bold"
@@ -66,22 +66,22 @@
             android:shadowDy="1"
             android:shadowRadius="2" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="46dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/direction"
-            android:layout_gravity="center_horizontal|bottom"
-            android:textAlignment="center"
-            android:textColor="#FFCDD2"
-            android:textSize="15sp" />
-
         <View
             android:layout_width="fill_parent"
             android:layout_height="5dip"
             android:background="@drawable/drop_shadow"
             android:layout_gravity="center_horizontal|bottom">
         </View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="61dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/direction"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textAlignment="center"
+            android:textColor="#FFCDD2"
+            android:textSize="15sp" />
     </FrameLayout>
 
 </FrameLayout>

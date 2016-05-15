@@ -26,6 +26,8 @@ public class GPSTracker extends Service implements LocationListener {
     // flag for GPS status
     boolean canGetLocation = false;
 
+    boolean isReady = false;
+
     Location location; // location
     double latitude; // latitude
     double longitude; // longitude
@@ -146,6 +148,8 @@ public class GPSTracker extends Service implements LocationListener {
         return this.canGetLocation;
     }
 
+    public boolean isGPSReady() { return this.isReady; }
+
     /**
      * Function to show settings alert dialog
      * On pressing Settings button will lauch Settings Options
@@ -192,6 +196,10 @@ public class GPSTracker extends Service implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
+        if(status == 0)
+            isReady = false;
+        else
+            isReady = true;
     }
 
     @Override

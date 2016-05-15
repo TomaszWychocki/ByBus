@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+        //setContentView(R.layout.pref_headers);
 
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
         prepareListData();
@@ -26,8 +27,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     }
 
     private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
 
         // Adding child data
         listDataHeader.add("Top 250");
@@ -35,7 +36,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         listDataHeader.add("Coming Soon..");
 
         // Adding child data
-        List<String> top250 = new ArrayList<String>();
+        List<String> top250 = new ArrayList<>();
         top250.add("The Shawshank Redemption");
         top250.add("The Godfather");
         top250.add("The Godfather: Part II");
@@ -44,7 +45,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         top250.add("The Dark Knight");
         top250.add("12 Angry Men");
 
-        List<String> nowShowing = new ArrayList<String>();
+        List<String> nowShowing = new ArrayList<>();
         nowShowing.add("The Conjuring");
         nowShowing.add("Despicable Me 2");
         nowShowing.add("Turbo");
@@ -52,7 +53,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         nowShowing.add("Red 2");
         nowShowing.add("The Wolverine");
 
-        List<String> comingSoon = new ArrayList<String>();
+        List<String> comingSoon = new ArrayList<>();
         comingSoon.add("2 Guns");
         comingSoon.add("The Smurfs 2");
         comingSoon.add("The Spectacular Now");

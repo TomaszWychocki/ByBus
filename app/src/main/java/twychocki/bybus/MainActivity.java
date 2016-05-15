@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView bottom_text;
     TextView Middle_text;
     TextView direction;
+    TextView lineText;
     TextView s;
     Location myLocation;
     AsyncTaskRunner runner;
@@ -51,11 +52,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         BusStops.add(new BusStop("Sczanieckiej", 53.440234, 14.563472000000047, 107, "Police osiedle Chemik"));
         BusStops.add(new BusStop("Matejki", 53.43582699999999, 14.56066599999997, 107, "Police osiedle Chemik"));
         BusStops.add(new BusStop("Plac Rodła", 53.431542, 14.557007999999996, 107, "Police osiedle Chemik"));
-        //3->
+        //5 -> Krzekowo
+        BusStops.add(new BusStop("Plac Rodła", 53.431679, 14.555623999999966, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Plac Grunwaldzki", 53.432709, 14.547616000000062, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Plac Szarych Szeregów", 53.43304999999999, 14.541294999999991, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Piastów", 53.432184, 14.539132999999993, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Bohaterów Warszawy", 53.433069, 14.533323999999993, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Wawrzyniaka", 53.436342, 14.532293999999979, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Karłowicza", 53.439156, 14.520309999999995, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Poniatowskiego", 53.44089899999999, 14.512869000000023, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Konopnickiej", 53.442158, 14.508082000000059, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Brzozowskiego", 53.442985, 14.502617999999984, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Wernyhory", 53.444848, 14.49692600000003, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Zołnierska", 53.446842, 14.491829000000052, 5, "Krzekowo"));
+        BusStops.add(new BusStop("Krzekowo", 53.448532, 14.488287000000014, 5, "Krzekowo"));
+
 
         bottom_text = (TextView) findViewById(R.id.distance);
         Middle_text = (TextView) findViewById(R.id.bus_stop_name);
         direction = (TextView) findViewById(R.id.direction);
+        lineText = (TextView) findViewById(R.id.lineText);
         s = (TextView) findViewById(R.id.status_text);
         gps = new GPSTracker(MainActivity.this);
         runner = new AsyncTaskRunner();
@@ -95,14 +111,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected String doInBackground(String... params) {
             while(!isCancelled()) {
                 if (gps.canGetLocation() && gps.isGPSEnabled) {
-                    double latitude = gps.getLatitude();
-                    double longitude = gps.getLongitude();
-                    myLocation = gps.getLocation();
-                    int nearst = findNearstStop();
-                    float dist = myLocation.distanceTo(BusStops.get(nearst).location);
+                    //if(gps.isGPSReady()) {
+                        double latitude = gps.getLatitude();
+                        double longitude = gps.getLongitude();
+                        myLocation = gps.getLocation();
+                        int nearst = findNearstStop();
+                        float dist = myLocation.distanceTo(BusStops.get(nearst).location);
 
-                    String str = "Twoja lokalizacja:\nLat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m";
-                    publishProgress(str, "Kierunek: " + BusStops.get(nearst).direction, BusStops.get(nearst).name);
+                        String str = "Twoja lokalizacja:\nLat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m";
+                        publishProgress(str, "Kierunek: " + BusStops.get(nearst).direction, BusStops.get(nearst).name, Integer.toString(BusStops.get(nearst).line), Boolean.toString(gps.isGPSReady()));
+                    //}
+                    //else
+                    //{
+                    //    publishProgress("x", "Oczekiwanie na sygnał GPS");
+                    //}
                 } else {
                     gps.showSettingsAlert();
                 }
@@ -119,9 +141,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         @Override
         protected void onProgressUpdate(String... text) {
-            bottom_text.setText(text[0]);
-            direction.setText(text[1]);
-            Middle_text.setText(text[2]);
+            if(text[0] != "x") {
+                bottom_text.setText(text[0]);
+                direction.setText(text[1]);
+                Middle_text.setText(text[2]);
+                lineText.setText("Linia " + text[3]);
+                s.setText("Przystanek " + text[4]);
+            }
+            else
+                s.setText(text[1]);
         }
     }
 
@@ -180,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent myIntent = new Intent(this, SettingsActivity.class);
+            Intent myIntent = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(myIntent);
         } else if (id == R.id.nav_gallery) {
 
