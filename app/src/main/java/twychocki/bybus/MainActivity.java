@@ -2,10 +2,8 @@ package twychocki.bybus;
 
 import android.content.Intent;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,20 +14,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     GPSTracker gps;
-    TextView bottom_text;
-    TextView Middle_text;
-    TextView direction;
+    TextView position_text;
+    TextView busStopName_text;
+    TextView direction_text;
     TextView lineText;
     TextView s;
     Location myLocation;
-    AsyncTaskRunner runner;
-    boolean status = false;
+    Timer timer;
+    TimerTask timerTask;
+    boolean isOn = false;
 
     List<BusStop> BusStops = new ArrayList<>();
 
@@ -68,31 +70,63 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         BusStops.add(new BusStop("Krzekowo", 53.448532, 14.488287000000014, 5, "Krzekowo"));
 
 
-        bottom_text = (TextView) findViewById(R.id.distance);
-        Middle_text = (TextView) findViewById(R.id.bus_stop_name);
-        direction = (TextView) findViewById(R.id.direction);
+        position_text = (TextView) findViewById(R.id.distance);
+        busStopName_text = (TextView) findViewById(R.id.bus_stop_name);
+        direction_text = (TextView) findViewById(R.id.direction);
         lineText = (TextView) findViewById(R.id.lineText);
         s = (TextView) findViewById(R.id.status_text);
         gps = new GPSTracker(MainActivity.this);
-        runner = new AsyncTaskRunner();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null)
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gps.getLocation();
-                if (gps.isGPSEnabled) {
-                    findViewById(R.id.fab).setVisibility(View.INVISIBLE);
-                    Snackbar.make(view, "Śledzenie uruchomione", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    s.setText("Przystanek");
-                    status = true;
-                    runner.execute();
+                try
+                {
+                    if (!isOn)
+                    {
+                        if(gps.canGetLocation)
+                        {
+                            gps.getLocation();
+                            if (timerTask != null)
+                            {
+                                timerTask = null;
+                            }
+                            if (timer != null)
+                            {
+                                timer = null;
+                            }
+                            timer = new Timer();
+                            timerTask = createTimerTask();
+                            timer.schedule(timerTask, 0, 2000);
+                            isOn = true;
+                            fab.setImageResource(android.R.drawable.ic_media_pause);
+                        }
+                        else
+                        {
+                            gps.getLocation();
+                            gps.showSettingsAlert();
+                            gps.getLocation();
+                        }
+                    }
+                    else
+                    {
+                        timerTask.cancel();
+                        timer.purge();
+                        timer.cancel();
+                        isOn = false;
+                        fab.setImageResource(android.R.drawable.ic_media_play);
+                        position_text.setText("");
+                    }
                 }
-                else
-                    gps.showSettingsAlert();
+                catch(Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "ERROR: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -106,51 +140,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            while(!isCancelled()) {
-                if (gps.canGetLocation() && gps.isGPSEnabled) {
-                    //if(gps.isGPSReady()) {
-                        double latitude = gps.getLatitude();
-                        double longitude = gps.getLongitude();
-                        myLocation = gps.getLocation();
-                        int nearst = findNearstStop();
-                        float dist = myLocation.distanceTo(BusStops.get(nearst).location);
+    private TimerTask createTimerTask()
+    {
+        TimerTask t = new TimerTask()
+        {
+            public void run()
+            {
+                MainActivity.this.runOnUiThread(new Runnable()
+                {
+                    public void run()
+                    {
+                        try {
+                            if(gps.canGetLocation() && gps.getLocation() != null) {
+                                double latitude = gps.getLatitude();
+                                double longitude = gps.getLongitude();
+                                myLocation = gps.getLocation();
+                                int nearst = findNearstStop();
+                                float dist = myLocation.distanceTo(BusStops.get(nearst).location);
 
-                        String str = "Twoja lokalizacja:\nLat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m";
-                        publishProgress(str, "Kierunek: " + BusStops.get(nearst).direction, BusStops.get(nearst).name, Integer.toString(BusStops.get(nearst).line), Boolean.toString(gps.isGPSReady()));
-                    //}
-                    //else
-                    //{
-                    //    publishProgress("x", "Oczekiwanie na sygnał GPS");
-                    //}
-                } else {
-                    gps.showSettingsAlert();
-                }
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                                String str = "Twoja lokalizacja:\nLat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m";
+                                position_text.setText(str);
+                                direction_text.setText("Kierunek: " + BusStops.get(nearst).direction);
+                                busStopName_text.setText(BusStops.get(nearst).name);
+                                lineText.setText("Linia " + Integer.toString(BusStops.get(nearst).line));
+                                s.setText("Przystanek");
+                            }
+                            else
+                            {
+                                busStopName_text.setText("");
+                                position_text.setText("");
+                                s.setText("Szukanie GPS");
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            Toast.makeText(getApplicationContext(), "ERROR: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
-            gps.stopUsingGPS();
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(String... text) {
-            if(text[0] != "x") {
-                bottom_text.setText(text[0]);
-                direction.setText(text[1]);
-                Middle_text.setText(text[2]);
-                lineText.setText("Linia " + text[3]);
-                s.setText("Przystanek " + text[4]);
-            }
-            else
-                s.setText(text[1]);
-        }
+        };
+        return t;
     }
 
     public int findNearstStop(){
@@ -188,32 +218,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_camera) {
             Intent myIntent = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(myIntent);
         } else if (id == R.id.nav_gallery) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
