@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <group android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_slideshow"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="O autorze" />
+        <item
+            android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Ustawienia" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_info_black_24dp"
-            android:title="O autorze" />
     </group>
+
 </menu>

@@ -1,0 +1,185 @@
+{
+  "busStops":[
+    {
+      "name":"Plac Rodła",
+      "direction":"Krzekowo",
+      "latitude": 53.431679,
+      "longitude": 14.555623999999966,
+      "line": 5
+    },
+    {
+      "name":"Plac Grunwaldzki",
+      "direction":"Krzekowo",
+      "latitude": 53.432709,
+      "longitude": 14.547616000000062,
+      "line": 5
+    },
+    {
+      "name":"Plac Szarych Szeregów",
+      "direction":"Krzekowo",
+      "latitude": 53.43304999999999,
+      "longitude": 14.541294999999991,
+      "line": 5
+    },
+    {
+      "name":"Piastów",
+      "direction":"Krzekowo",
+      "latitude": 53.432184,
+      "longitude": 14.539132999999993,
+      "line": 5
+    },
+    {
+      "name":"Kolonistów",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.48815699999999,
+      "longitude": 14.585356000000047,
+      "line": 107
+    },
+    {
+      "name":"Nehringa Pomnik",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.47944099999999,
+      "longitude": 14.58783399999993,
+      "line": 107
+    },
+    {
+      "name":"Pokoju",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.475601,
+      "longitude": 14.589756999999963,
+      "line": 107
+    },
+    {
+      "name":"Bogumińska nż",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.472016,
+      "longitude": 14.583276999999953,
+      "line": 107
+    },
+    {
+      "name":"Ogrody \"Przyjaźń\" nż",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.468395594207685,
+      "longitude": 14.579444825649261,
+      "line": 107
+    },
+    {
+      "name":"Hoża",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.46343599999999,
+      "longitude": 14.577307000000019,
+      "line": 107
+    },
+    {
+      "name":"Jana z Czarnolasu",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.458658,
+      "longitude": 14.571942000000035,
+      "line": 107
+    },
+    {
+      "name":"Komuny Paryskiej",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.45388999999999,
+      "longitude": 14.565382999999997,
+      "line": 107
+    },
+    {
+      "name":"Staw Brodowski",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.450583,
+      "longitude": 14.56296199999997,
+      "line": 107
+    },
+    {
+      "name":"Wilcza Wiadukt",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.446425,
+      "longitude": 14.56528000000003,
+      "line": 107
+    },
+    {
+      "name":"Sczanieckiej",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.446425,
+      "longitude": 14.56528000000003,
+      "line": 107
+    },
+    {
+      "name":"Matejki",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.43582699999999,
+      "longitude": 14.56066599999997,
+      "line": 107
+    },
+    {
+      "name":"Plac Rodła",
+      "direction":"Police osiedle Chemik",
+      "latitude": 53.431542,
+      "longitude": 14.557007999999996,
+      "line": 107
+    }
+  ],
+  "lines":[
+    {
+      "number": 1,
+      "direction1":"Potulicka",
+      "direction2":"Głębokie"
+    },
+    {
+      "number": 2,
+      "direction1":"Turkusowa",
+      "direction2":"Dworzec Niebuszewo"
+    },
+    {
+      "number": 3,
+      "direction1":"Pomorzany",
+      "direction2":"Las Arkoński"
+    },
+    {
+      "number": 4,
+      "direction1":"Pomorzany",
+      "direction2":"Krzekowo"
+    },
+    {
+      "number": 5,
+      "direction1":"Stocznia Szczecińska",
+      "direction2":"Krzekowo"
+    },
+    {
+      "number": 6,
+      "direction1":"Pomorzany",
+      "direction2":"Gocław"
+    },
+    {
+      "number": 11,
+      "direction1":"Pomorzany",
+      "direction2":"Ludowa"
+    },
+    {
+      "number": 12,
+      "direction1":"Pomorzany",
+      "direction2":"Dworzec Niebuszewo"
+    },
+    {
+      "number": 107,
+      "direction1":"Plac Rodła",
+      "direction2":"Police osiedle Chemik"
+    }
+  ]
+}
+
+
+
+
+
+
+BusStops.add(new BusStop("Bohaterów Warszawy", 53.433069, 14.533323999999993, 5, "Krzekowo"));
+BusStops.add(new BusStop("Wawrzyniaka", 53.436342, 14.532293999999979, 5, "Krzekowo"));
+BusStops.add(new BusStop("Karłowicza", 53.439156, 14.520309999999995, 5, "Krzekowo"));
+BusStops.add(new BusStop("Poniatowskiego", 53.44089899999999, 14.512869000000023, 5, "Krzekowo"));
+BusStops.add(new BusStop("Konopnickiej", 53.442158, 14.508082000000059, 5, "Krzekowo"));
+BusStops.add(new BusStop("Brzozowskiego", 53.442985, 14.502617999999984, 5, "Krzekowo"));
+BusStops.add(new BusStop("Wernyhory", 53.444848, 14.49692600000003, 5, "Krzekowo"));
+BusStops.add(new BusStop("Zołnierska", 53.446842, 14.491829000000052, 5, "Krzekowo"));
+BusStops.add(new BusStop("Krzekowo", 53.448532, 14.488287000000014, 5, "Krzekowo"));
