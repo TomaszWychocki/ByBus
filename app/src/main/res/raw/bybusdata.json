@@ -29,6 +29,69 @@
       "line": 5
     },
     {
+      "name":"Bohaterów Warszawy",
+      "direction":"Krzekowo",
+      "latitude": 53.433069,
+      "longitude": 14.533323999999993,
+      "line": 5
+    },
+    {
+      "name":"Wawrzyniaka",
+      "direction":"Krzekowo",
+      "latitude": 53.436342,
+      "longitude": 14.532293999999979,
+      "line": 5
+    },
+    {
+      "name":"Karłowicza",
+      "direction":"Krzekowo",
+      "latitude": 53.439156,
+      "longitude": 14.520309999999995,
+      "line": 5
+    },
+    {
+      "name":"Poniatowskiego",
+      "direction":"Krzekowo",
+      "latitude": 53.44089899999999,
+      "longitude": 14.512869000000023,
+      "line": 5
+    },
+    {
+      "name":"Konopnickiej",
+      "direction":"Krzekowo",
+      "latitude": 53.442158,
+      "longitude": 14.508082000000059,
+      "line": 5
+    },
+    {
+      "name":"Brzozowskiego",
+      "direction":"Krzekowo",
+      "latitude": 53.442985,
+      "longitude": 14.502617999999984,
+      "line": 5
+    },
+    {
+      "name":"Wernyhory",
+      "direction":"Krzekowo",
+      "latitude": 53.444848,
+      "longitude": 14.49692600000003,
+      "line": 5
+    },
+    {
+      "name":"Zołnierska",
+      "direction":"Krzekowo",
+      "latitude": 53.446842,
+      "longitude": 14.491829000000052,
+      "line": 5
+    },
+    {
+      "name":"Krzekowo",
+      "direction":"Krzekowo",
+      "latitude": 53.448532,
+      "longitude": 14.488287000000014,
+      "line": 5
+    },
+    {
       "name":"Kolonistów",
       "direction":"Police osiedle Chemik",
       "latitude": 53.48815699999999,
@@ -118,6 +181,167 @@
       "latitude": 53.431542,
       "longitude": 14.557007999999996,
       "line": 107
+    },
+    {
+      "name":"Kołobrzeg",
+      "direction":"Szczecin Główny",
+      "latitude": 54.18216289999999,
+      "longitude": 15.569999000000053,
+      "line": 88723
+    },
+    {
+      "name":"Kołobrzeg Stadion",
+      "direction":"Szczecin Główny",
+      "latitude": 54.17540959999999,
+      "longitude": 15.559800799999948,
+      "line": 88723
+    },
+    {
+      "name":"Stary Borek",
+      "direction":"Szczecin Główny",
+      "latitude": 54.137928401519396,
+      "longitude": 15.481651425361633,
+      "line": 88723
+    },
+    {
+      "name":"Głowaczewo",
+      "direction":"Szczecin Główny",
+      "latitude": 54.130693345172304,
+      "longitude": 15.43902575969696,
+      "line": 88723
+    },
+    {
+      "name":"Karcino",
+      "direction":"Szczecin Główny",
+      "latitude": 54.10887366765816,
+      "longitude": 15.397236943244934,
+      "line": 88723
+    },
+    {
+      "name":"Bieczyno Pomorskie",
+      "direction":"Szczecin Główny",
+      "latitude": 54.09571657515489,
+      "longitude": 15.353337228298187,
+      "line": 88723
+    },
+    {
+      "name":"Trzebiatów",
+      "direction":"Szczecin Główny",
+      "latitude": 54.06043321721507,
+      "longitude": 15.2776238322258,
+      "line": 88723
+    },
+    {
+      "name":"Gąbin",
+      "direction":"Szczecin Główny",
+      "latitude": 54.023553674302406,
+      "longitude": 15.28148889541626,
+      "line": 88723
+    },
+    {
+      "name":"Gryfice",
+      "direction":"Szczecin Główny",
+      "latitude": 53.91347061955448,
+      "longitude": 15.191500782966614,
+      "line": 88723
+    },
+    {
+      "name":"Baszewice",
+      "direction":"Szczecin Główny",
+      "latitude": 53.862682725427,
+      "longitude": 15.192391276359558,
+      "line": 88723
+    },
+    {
+      "name":"Płoty",
+      "direction":"Szczecin Główny",
+      "latitude": 53.8066161348509,
+      "longitude": 15.262227952480316,
+      "line": 88723
+    },
+    {
+      "name":"Żabowo",
+      "direction":"Szczecin Główny",
+      "latitude": 53.71673626077491,
+      "longitude": 15.189204812049866,
+      "line": 88723
+    },
+    {
+      "name":"Nowogard",
+      "direction":"Szczecin Główny",
+      "latitude": 53.666303835251576,
+      "longitude": 15.121674835681915,
+      "line": 88723
+    },
+    {
+      "name":"Wyszomierz",
+      "direction":"Szczecin Główny",
+      "latitude": 53.62633623809755,
+      "longitude": 15.064439177513123,
+      "line": 88723
+    },
+    {
+      "name":"Osina",
+      "direction":"Szczecin Główny",
+      "latitude": 53.6080203455258,
+      "longitude": 15.009754300117493,
+      "line": 88723
+    },
+    {
+      "name":"Mosty",
+      "direction":"Szczecin Główny",
+      "latitude": 53.57181705575608,
+      "longitude": 14.933617115020752,
+      "line": 88723
+    },
+    {
+      "name":"Port Lotniczy Szczecin Goleniów",
+      "direction":"Szczecin Główny",
+      "latitude": 53.59344723641662,
+      "longitude": 14.898684024810791,
+      "line": 88723
+    },
+    {
+      "name":"Goleniów",
+      "direction":"Szczecin Główny",
+      "latitude": 53.55883979999999,
+      "longitude": 14.839200600000026,
+      "line": 88723
+    },
+    {
+      "name":"Kliniska",
+      "direction":"Szczecin Główny",
+      "latitude": 53.46030630548983,
+      "longitude": 14.783799648284912,
+      "line": 88723
+    },
+    {
+      "name":"Szczecin Dąbie",
+      "direction":"Szczecin Główny",
+      "latitude": 53.39104522988463,
+      "longitude": 14.669376611709595,
+      "line": 88723
+    },
+    {
+      "name":"Szczecin Zdroje",
+      "direction":"Szczecin Główny",
+      "latitude": 53.37864381868729,
+      "longitude": 14.636825323104858,
+      "line": 88723
+    },
+    {
+      "name":"Szczecin Port Centralny",
+      "direction":"Szczecin Główny",
+      "latitude": 53.4134527,
+      "longitude": 14.565599099999986,
+      "line": 88723
+    },
+    {
+      "name":"Szczecin Główny",
+      "direction":"Szczecin Główny",
+      "latitude": 53.41876300000001,
+      "longitude": 14.550643900000068,
+      "line": 88723
     }
   ],
   "lines":[
@@ -165,21 +389,13 @@
       "number": 107,
       "direction1":"Plac Rodła",
       "direction2":"Police osiedle Chemik"
+    },
+    {
+      "number": 88723,
+      "direction1":"Kołobrzeg",
+      "direction2":"Szczecin Główny"
     }
   ]
 }
 
 
-
-
-
-
-BusStops.add(new BusStop("Bohaterów Warszawy", 53.433069, 14.533323999999993, 5, "Krzekowo"));
-BusStops.add(new BusStop("Wawrzyniaka", 53.436342, 14.532293999999979, 5, "Krzekowo"));
-BusStops.add(new BusStop("Karłowicza", 53.439156, 14.520309999999995, 5, "Krzekowo"));
-BusStops.add(new BusStop("Poniatowskiego", 53.44089899999999, 14.512869000000023, 5, "Krzekowo"));
-BusStops.add(new BusStop("Konopnickiej", 53.442158, 14.508082000000059, 5, "Krzekowo"));
-BusStops.add(new BusStop("Brzozowskiego", 53.442985, 14.502617999999984, 5, "Krzekowo"));
-BusStops.add(new BusStop("Wernyhory", 53.444848, 14.49692600000003, 5, "Krzekowo"));
-BusStops.add(new BusStop("Zołnierska", 53.446842, 14.491829000000052, 5, "Krzekowo"));
-BusStops.add(new BusStop("Krzekowo", 53.448532, 14.488287000000014, 5, "Krzekowo"));

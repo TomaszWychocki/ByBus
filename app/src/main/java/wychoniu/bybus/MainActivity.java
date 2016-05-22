@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Context context = this;
     String line = "", direction = "";
     int startIndex, stopIndex;
+    float speed = 0;
 
     List<BusStop> BusStops = new ArrayList<>();
 
@@ -144,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onLocationChanged(Location location) {
                 status = true;
                 myLocation = location;
+                speed = location.getSpeed();
             }
 
             @Override
@@ -233,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 int nearst = findNearstStop(myLocation);
                                 float dist = myLocation.distanceTo(BusStops.get(nearst).location);
 
-                                String str = "Twoja lokalizacja:\nLat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m";
+                                String str = "Lat: " + latitude + "\nLong: " + longitude + "\nOdległość: " + String.format("%.0f", dist) + "m\nSpd: " + String.format("%.0f", speed);
                                 position_text.setText(str);
                                 busStopName_text.setText(BusStops.get(nearst).name);
                                 s.setText("Przystanek");
